@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+
+    <body>
+        <div id="myvue">
+            {{ message }}
+        </div>
+
+        <div id="app-2">
+            <span v-bind:title="message">
+                Hover your mouse over me for a few seconds
+                to see my dynamically bound title!
+            </span>
+        </div>
+
+        <div id="app-3">
+            <p v-if="seen">Now you see me</p>
+        </div>
+
+        <div id="app-4">
+            <ul v-for="todo in todos">
+                <li>{{ todo.text }}</li>
+            </ul>
+        </div>
+
+        <div id="app-5">
+            <p>{{ message }}</p>
+            <button v-on:click="reverseMessage">Reverse Message</button>
+        </div>
+
+        <div id="app-6">
+            <p>{{ message }}</p>
+            <input v-model="message" />
+        </div>
+
+        <div id="app-7">
+            <ol>
+                <!-- Create an instance of the todo-item component -->
+                <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+            </ol>
+        </div>
+
+        <script src="./node_modules/vue/dist/vue.js"></script>
+
+        <script src="./src/myvue.js"></script>
+    </body>
+</html>

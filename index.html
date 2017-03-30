@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>myvue</title>
+  </head>
+  <body>
+    <div id="myvue">
+        {{message}}
+    </div>
+    <!-- built files will be auto injected -->
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+
+    <script src="./src/myvue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#myvue',
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
+
+        var log = console.log.bind(null)
+        log("app.$el: ", app.$el)
+    </script>
+  </body>
+</html>
