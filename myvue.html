@@ -80,6 +80,20 @@
             </div>
         </div>
 
+        <div id="app-15">
+            <h1 v-if="ok">Yes</h1>
+            <h1 v-else>No</h1>
+        </div>
+
+        <template v-if="ok">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+        <div v-else>
+            <p>Template</p>
+        </div>
+
         <script src="./node_modules/axios/dist/axios.js"></script>
         <script src="./node_modules/lodash/lodash.js"></script>
         <script src="./node_modules/vue/dist/vue.js"></script>
