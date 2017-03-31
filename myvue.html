@@ -68,6 +68,18 @@
             <p>{{ answer }}</p>
         </div>
 
+        <style>
+            .active {
+                background-color: grey;
+                width: 100px;
+                height: 100px;
+            }
+        </style>
+        <div id="app-14">
+            <div v-bind:class='classObject'>
+            </div>
+        </div>
+
         <script src="./node_modules/axios/dist/axios.js"></script>
         <script src="./node_modules/lodash/lodash.js"></script>
         <script src="./node_modules/vue/dist/vue.js"></script>
