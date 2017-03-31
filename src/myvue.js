@@ -1,3 +1,5 @@
+'use strict'
+
 var app = new Vue({
     el: '#myvue',
     data: {
@@ -74,5 +76,123 @@ var app7 = new Vue({
             {text: "a"},
             {text: "b"}
         ]
+    }
+})
+
+var data = { a: 1 }
+var app8 = new Vue ({
+    el: '#app-8',
+    data: data
+})
+
+var isTrue = app8.$data === data
+log('isTrue: ', isTrue)
+
+log(app8.$el === document.getElementById('app-8'))
+
+app8.$watch('a', function(newVal, oldVal) {
+    console.log('newVal, oldVal: ', newVal, oldVal)
+})
+
+app8.a = 2
+
+var app9 = new Vue({
+    data: {
+        a: 5
+    },
+    created: function () {
+        log('a is: ', this.a)
+    }
+})
+
+var app10 = new Vue({
+    el: '#app-10',
+    data: {
+        message: 'Hello'
+    }
+})
+
+
+var app11 = new Vue({
+    el: '#app-11',
+    data: {
+        message: 'Hello'
+    },
+    computed: {
+        reverseMessage: function() {
+            return this.message.split('').reverse().join(',')
+        },
+        now: function() {
+            return Date.now()
+        }
+    }
+})
+
+var app12 = new Vue({
+    el: '#app-12',
+    data: {
+        firstName: 'Foo',
+        lastName: 'Bar',
+        //fullName: 'Foo Bar'
+    },
+    //watch: {
+        //firstName: function (val) {
+            //this.fullName = val + ' ' + this.lastName
+        //},
+        //lastName: function(val) {
+            //this.fullName = this.firstName + ' ' + val
+        //}
+    //}
+    computed: {
+        fullName: {
+            // getter
+            get: function () {
+                return this.firstName + ' ' + this.lastName
+            },
+            // setter
+            set: function (newValue) {
+                var names = newValue.split(' ')
+                this.firstName = names[0]
+                this.lastName = names[names.length - 1]
+            }
+        }
+
+    }
+})
+
+
+var app13 = new Vue({
+    el: '#app-13',
+    data: {
+        question: '',
+        answer: 'I cannot give you an answer until you ask a question!'
+    },
+    watch: {
+        // whenever question changes, this function will run
+        question: function (newQuestion) {
+            this.answer = 'Waiting for you to stop typing...'
+            this.getAnswer()
+        }
+    },
+    methods: {
+        getAnswer: _.debounce(
+            function () {
+                if (this.question.indexOf('?') === -1) {
+                    this.answer = 'Questions usually contain a question mark. ;-)'
+                    return
+                }
+                this.answer = 'Thinking...'
+                var vm = this
+                axios.get('https://yesno.wtf/api')
+                    .then(function (response) {
+                        log('it\'s ajaxing ...')
+                        vm.answer = _.capitalize(response.data.answer)
+                    })
+                    .catch(function (error) {
+                        vm.answer = 'Error! Could not reach the API. ' + error
+                    })
+            },
+            500
+        )
     }
 })

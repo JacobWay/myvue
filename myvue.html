@@ -42,6 +42,34 @@
             </ol>
         </div>
 
+        <div id='app-8'>
+            <p>{{ a }}</p>
+        </div>
+
+        <div id='app-10'>
+            <p>{{ message.split('').reverse().join('') }}</p>
+        </div>
+
+        <div id='app-11'>
+            <p>Original message: "{{ message }}"</p>
+            <p>Computed reversed message: "{{ reverseMessage }}"</p>
+            <p>Date now: {{ now }}</p>
+        </div>
+
+        <div id="app-12">
+            {{ fullName }}
+        </div>
+
+        <div id="app-13">
+            <p>
+                Ask a yes/no question:
+                <input v-model='question'>
+            </p>
+            <p>{{ answer }}</p>
+        </div>
+
+        <script src="./node_modules/axios/dist/axios.js"></script>
+        <script src="./node_modules/lodash/lodash.js"></script>
         <script src="./node_modules/vue/dist/vue.js"></script>
 
         <script src="./src/myvue.js"></script>
