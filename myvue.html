@@ -94,6 +94,16 @@
             <p>Template</p>
         </div>
 
+        <ul id="app-16">
+            <li v-for="(value, key, index) in items">
+                {{ index }}. {{ key }} : {{ value }}
+            </li>
+        </ul>
+
+        <ul id="app-17">
+            <li v-for="n in even(numbers)">{{ n }}</li>
+        </ul>
+
         <script src="./node_modules/axios/dist/axios.js"></script>
         <script src="./node_modules/lodash/lodash.js"></script>
         <script src="./node_modules/vue/dist/vue.js"></script>

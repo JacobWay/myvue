@@ -212,3 +212,35 @@ var app14 = new Vue({
         }
     }
 })
+
+var app16 = new Vue({
+    el: '#app-16',
+    data: {
+        items: {
+            firstName: 'John',
+            lastName: 'Doe',
+            age: 30
+        }
+    }
+})
+
+var app17 = new Vue({
+    el: '#app-17',
+    data: {
+        numbers: [1, 2, 3, 4, 6, 8]
+    },
+    computed: {
+        evenNumbers: function(){
+            return this.numbers.filter(function(n){
+                return n % 2 == 0
+            })
+        }
+    },
+    methods: {
+        even: function(numbers){
+            return numbers.filter(function(n){
+                return n % 2 == 0
+            })
+        }
+    }
+})
