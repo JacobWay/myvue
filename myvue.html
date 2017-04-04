@@ -104,6 +104,16 @@
             <li v-for="n in even(numbers)">{{ n }}</li>
         </ul>
 
+        <div id="app-18">
+            <button v-on:click="counter += 1">Add 1</button>
+            <p>The button above have been clicked {{ counter }} times.</p>
+        </div>
+
+        <div id="app-19">
+            <button v-on:click="greet">Greet</button>
+            <button v-on:click="warn($event)">Greet1</button>
+        </div>
+
         <script src="./node_modules/axios/dist/axios.js"></script>
         <script src="./node_modules/lodash/lodash.js"></script>
         <script src="./node_modules/vue/dist/vue.js"></script>

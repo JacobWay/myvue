@@ -244,3 +244,35 @@ var app17 = new Vue({
         }
     }
 })
+
+var app18 = new Vue({
+    el: '#app-18',
+    data: {
+        counter: 0
+    }
+})
+
+var app19 = new Vue({
+    el: '#app-19',
+    data: {
+        name: 'Vue.js'
+    },
+    methods: {
+        greet: app19Greet,
+        warn: function(event){
+            if(event){
+                console.log(event);
+            }
+        }
+    }
+})
+
+var that = this;
+function app19Greet(event){
+    console.log('Hello ' + this.name + '!')
+
+    if(event){
+        console.log(event.target.tagName, event)
+    }
+}
+
