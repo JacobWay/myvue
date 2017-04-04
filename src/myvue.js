@@ -276,3 +276,42 @@ function app19Greet(event){
     }
 }
 
+var app20 = new Vue({
+    el: '#app-20',
+    data: {
+        checkedNames: []
+    }
+})
+
+var app21 = new Vue({
+    el: '#app-21',
+    data: {
+        selected: ''
+    }
+})
+
+var app22 = new Vue({
+    el: '#app-22',
+    data: {
+        selected: []
+    }
+})
+
+var app23 = new Vue({
+    el: '#app-23',
+    data: {
+        selected: '',
+        options: [
+            {text: 'A', value: 'A'},
+            {text: 'B', value: 'B'}
+        ]
+    }
+})
+
+var app24 = new Vue({
+    el: '#app-24',
+    data: {
+        toggle: '',
+        a: true
+    }
+})
