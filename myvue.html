@@ -1,162 +1,224 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    </head>
 
-    <body>
-        <div id="myvue">
-            {{ message }}
-        </div>
+<head>
+</head>
 
-        <div id="app-2">
-            <span v-bind:title="message">
+<body>
+    <div id="myvue">
+        {{ message }}
+    </div>
+
+    <div id="app-2">
+        <span v-bind:title="message">
                 Hover your mouse over me for a few seconds
                 to see my dynamically bound title!
             </span>
-        </div>
+    </div>
 
-        <div id="app-3">
-            <p v-if="seen">Now you see me</p>
-        </div>
+    <div id="app-3">
+        <p v-if="seen">Now you see me</p>
+    </div>
 
-        <div id="app-4">
-            <ul v-for="todo in todos">
-                <li>{{ todo.text }}</li>
-            </ul>
-        </div>
+    <div id="app-4">
+        <ul v-for="todo in todos">
+            <li>{{ todo.text }}</li>
+        </ul>
+    </div>
 
-        <div id="app-5">
-            <p>{{ message }}</p>
-            <button v-on:click="reverseMessage">Reverse Message</button>
-        </div>
+    <div id="app-5">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
 
-        <div id="app-6">
-            <p>{{ message }}</p>
-            <input v-model="message" />
-        </div>
+    <div id="app-6">
+        <p>{{ message }}</p>
+        <input v-model="message" />
+    </div>
 
-        <div id="app-7">
-            <ol>
-                <!-- Create an instance of the todo-item component -->
-                <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
-            </ol>
-        </div>
+    <div id="app-7">
+        <ol>
+            <!-- Create an instance of the todo-item component -->
+            <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+        </ol>
+    </div>
 
-        <div id='app-8'>
-            <p>{{ a }}</p>
-        </div>
+    <div id='app-8'>
+        <p>{{ a }}</p>
+    </div>
 
-        <div id='app-10'>
-            <p>{{ message.split('').reverse().join('') }}</p>
-        </div>
+    <div id='app-10'>
+        <p>{{ message.split('').reverse().join('') }}</p>
+    </div>
 
-        <div id='app-11'>
-            <p>Original message: "{{ message }}"</p>
-            <p>Computed reversed message: "{{ reverseMessage }}"</p>
-            <p>Date now: {{ now }}</p>
-        </div>
+    <div id='app-11'>
+        <p>Original message: "{{ message }}"</p>
+        <p>Computed reversed message: "{{ reverseMessage }}"</p>
+        <p>Date now: {{ now }}</p>
+    </div>
 
-        <div id="app-12">
-            {{ fullName }}
-        </div>
+    <div id="app-12">
+        {{ fullName }}
+    </div>
 
-        <div id="app-13">
-            <p>
-                Ask a yes/no question:
-                <input v-model='question'>
-            </p>
-            <p>{{ answer }}</p>
-        </div>
+    <div id="app-13">
+        <p>
+            Ask a yes/no question:
+            <input v-model='question'>
+        </p>
+        <p>{{ answer }}</p>
+    </div>
 
-        <style>
-            .active {
-                background-color: grey;
-                width: 100px;
-                height: 100px;
-            }
-        </style>
-        <div id="app-14">
-            <div v-bind:class='classObject'>
-            </div>
+    <style>
+        .active {
+            background-color: grey;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <div id="app-14">
+        <div v-bind:class='classObject'>
         </div>
+    </div>
 
-        <div id="app-15">
-            <h1 v-if="ok">Yes</h1>
-            <h1 v-else>No</h1>
-        </div>
+    <div id="app-15">
+        <h1 v-if="ok">Yes</h1>
+        <h1 v-else>No</h1>
+    </div>
 
-        <template v-if="ok">
+    <template v-if="ok">
             <h1>Title</h1>
             <p>Paragraph 1</p>
             <p>Paragraph 2</p>
         </template>
-        <div v-else>
-            <p>Template</p>
-        </div>
+    <div v-else>
+        <p>Template</p>
+    </div>
 
-        <ul id="app-16">
-            <li v-for="(value, key, index) in items">
-                {{ index }}. {{ key }} : {{ value }}
-            </li>
-        </ul>
+    <ul id="app-16">
+        <li v-for="(value, key, index) in items">
+            {{ index }}. {{ key }} : {{ value }}
+        </li>
+    </ul>
 
-        <ul id="app-17">
-            <li v-for="n in even(numbers)">{{ n }}</li>
-        </ul>
+    <ul id="app-17">
+        <li v-for="n in even(numbers)">{{ n }}</li>
+    </ul>
 
-        <div id="app-18">
-            <button v-on:click="counter += 1">Add 1</button>
-            <p>The button above have been clicked {{ counter }} times.</p>
-        </div>
+    <div id="app-18">
+        <button v-on:click="counter += 1">Add 1</button>
+        <p>The button above have been clicked {{ counter }} times.</p>
+    </div>
 
-        <div id="app-19">
-            <button v-on:click="greet">Greet</button>
-            <button v-on:click="warn($event)">Greet1</button>
-        </div>
+    <div id="app-19">
+        <button v-on:click="greet">Greet</button>
+        <button v-on:click="warn($event)">Greet1</button>
+    </div>
 
-        <div id="app-20">
-            <input type="checkbox" id="Jack" v-model='checkedNames' />
-            <label for="Jack">Jack</label>
-            <input type="checkbox" id="Smith" value="Smith" v-model='checkedNames' />
-            <label for="Simth">Smith</label>
-            <p>Checked names: {{checkedNames}}</p>
-        </div>
+    <div id="app-20">
+        <input type="checkbox" id="Jack" v-model='checkedNames' />
+        <label for="Jack">Jack</label>
+        <input type="checkbox" id="Smith" value="Smith" v-model='checkedNames' />
+        <label for="Simth">Smith</label>
+        <p>Checked names: {{checkedNames}}</p>
+    </div>
 
-        <div id="app-21">
-            <select v-model="selected">
+    <div id="app-21">
+        <select v-model="selected">
                 <option disabled value="">Please select one</option>
                 <option value="C">A</option>
                 <option value="B">B</option>
             </select>
-            <span>Selected: {{selected}}</span>
-        </div>
+        <span>Selected: {{selected}}</span>
+    </div>
 
-        <div id="app-22">
-            <select multiple v-model="selected">
+    <div id="app-22">
+        <select multiple v-model="selected">
                 <option disabled value="">Please select multiple options</option>
                 <option>A</option>
                 <option>B</option>
             </select>
-            <span>Selected: {{selected}}</span>
-        </div>
+        <span>Selected: {{selected}}</span>
+    </div>
 
-        <div id="app-23">
-            <select v-model="selected">
+    <div id="app-23">
+        <select v-model="selected">
                 <option disabled value="">Please select one></option>
                 <option v-for='option in options' :value='option.value'>{{option.text}}</option>
             </select>
-            <span>Selected: {{selected}}</span>
-        </div>
+        <span>Selected: {{selected}}</span>
+    </div>
 
-        <div id="app-24">
-            <input type="checkbox" v-bind:true-value='a' v-model="toggle" />
-            <span>Checked: {{toggle}}</span>
-        </div>
+    <div id="app-24">
+        <input type="checkbox" v-bind:true-value='a' v-model="toggle" />
+        <span>Checked: {{toggle}}</span>
+    </div>
 
-        <script src="./node_modules/axios/dist/axios.js"></script>
-        <script src="./node_modules/lodash/lodash.js"></script>
-        <script src="./node_modules/vue/dist/vue.js"></script>
+    <div id="app-25">
+        <my-component></my-component>
+    </div>
 
-        <script src="./src/myvue.js"></script>
-    </body>
+    <div id="app-26">
+        <my_component_1></my_component_1>
+    </div>
+
+    <div id="app-27">
+        <input v-model="parentMessage" />
+        <child v-bind:my-message="parentMessage"></child>
+    </div>
+
+    <div id="app-28">
+        <simple_counter></simple_counter>
+    </div>
+
+    <div id="app-29">
+        <p>Total: {{total}}</p>
+        <button-increment v-on:increment="increeTotal"></button-increment>
+        <button-increment v-on:increment="increeTotal"></button-increment>
+    </div>
+
+    <div id="app-30">
+        <input v-model="price1" type="text">
+        <currency-input v-model='price'></currency-input>
+    </div>
+
+    <div id="app-31">
+        <currency-input-1 label="somePrice" v-model="price"></currency-input-1>
+    </div>
+
+    <div id="app-32">
+        <span ref="mySpan">some span</span>
+    </div>
+
+    <div id="app-33">
+        {{message}}
+    </div>
+
+<style>
+    .fade-enter-active, .fade-leave-active{
+        transition: opacity .5s
+    }
+    .fade-enter, .fade-leave-to{
+        opacity: 0
+    }
+</style>
+
+    <div id="app-34">
+        <button v-on:click="show = !show">
+            Toggle
+        </button>
+
+        <transition name="fade">
+            <p v-if="show">hello</p>
+        </transition>
+    </div>
+
+    <script src="./node_modules/axios/dist/axios.js"></script>
+    <script src="./node_modules/lodash/lodash.js"></script>
+    <script src="./static/scripts/currency-validator.js"></script>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+
+    <script src="./src/myvue.js"></script>
+</body>
+
 </html>
