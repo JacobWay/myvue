@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+
+  <body>
+    <div id="app1">
+      {{message}}
+    </div>
+
+    <div id="app2">
+      <span v-bind:title="message">
+        Hover your mouse over me for a few seconds
+        to see my dynamically bound title!
+      </span>
+    </div>
+
+    <div id="app3">
+      <span v-if="isSeen">
+        Now you can see me.
+      </span>
+    </div>
+
+    <div id="app4">
+      <ol>
+        <li v-for="item in todos">
+          {{item}}
+        </li>
+      </ol>
+    </div>
+
+    <div id="app5">
+      <p>
+        {{message}}
+      </p>
+
+      <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+
+    <div id="app6">
+      <p>
+        {{message}}
+      </p>
+
+      <input v-model="message" />
+    </div>
+
+    <div id="app7">
+      {{message}}
+      <ol>
+        <todo-item
+          v-for="todo in todos"
+          v-bind:todo="todo"
+          v-bind:key="todo.text"
+          >
+        </todo-item>
+      </ol>
+    </div>
+
+    <div id="app8">
+      <p>Using mustaches: {{ rawHtml }}</p>
+      <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+
+      <button v-bind:disabled="isButtonDisabled">A Button</button>
+
+      <a v-on:click="clickHandler">{{clickMessage}}</a>
+
+      <p>Original message: {{message}}</p>
+      <p>Reversed message: {{reverseMessage}}</p>
+      <p>{{tip}}</p>
+
+      <div>{{fullName}}</div>
+    </div>
+
+    <div id="app9">
+      <p>
+        Ask a yes/no question:
+        <input v-model="question">
+      </p>
+
+      <p>{{answer}}</p>
+    </div>
+
+    <div id="app10">
+      Please input your question ends with a question mark:
+      <div>
+        <input v-model="question" />
+      </div>
+
+      <div>{{answer}}</div>
+    </div>
+
+<style>
+  .active {
+    color: blue;
+  }
+  .blockDisplay {
+    width: 100px;
+    height: 100px;
+    display: block;
+    background: green;
+  }
+  .has_error {
+    color: red;
+  }
+</style>
+
+    <div id="app11">
+      <span :class="classObject">Color</span>
+    </div>
+
+    <div id="app12">
+      <span :class="[isActive, hasError]">Color</span>
+    </div>
+
+    <div id="app13">
+      <component_1 :class="hasError">Component_1</component_1>
+    </div>
+
+    <div id="app14">
+      <div :style="[styleObject, display]">Style Object</div>
+    </div>
+
+    <!-- Conditional Rendering -->
+    <div id="app15">
+      <div v-if="isDisplay">
+        You can see me.
+      </div>
+      <div v-else>
+        You cannot see me.
+      </div>
+
+      <template v-if="isDisplay">
+        <h1>Title</h1>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+      </template>
+
+      <template v-if="loginType === 'user_name'">
+        <label>User Name: </label>
+        <input placeholder="Enter your username" key="user_name_input"/>
+      </template>
+      <template v-else>
+        <label>Email: </label>
+        <input placeholder="Enter your Email" key="email_input"/>
+      </template>
+
+      <div>
+        <button @click="toggleLoginType">Toggle login type</button>
+      </div>
+    </div>
+
+    <div id="app16">
+      <ol>
+        <li v-for="(item, index) of items">
+          {{item + ' - ' + index}}
+        </li>
+      </ol>
+
+      <ul>
+        <li v-for="(value, key, index) of itemsObj">
+          {{ index + ' - ' + key + ' - ' + value }}
+        </li>
+      </ul>
+    </div>
+
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/axios/dist/axios.js"></script>
+    <script src="../../node_modules/lodash/lodash.js"></script>
+    <script src="../scripts/index.js"></script>
+  </body>
+</html>
