@@ -150,6 +150,15 @@
       </div>
     </div>
 
+<style>
+.divider {
+  height: 10px;
+  background: blue;
+  line-height: 10px;
+  margin: 5px 0px;
+}
+</style>
+
     <div id="app16">
       <ol>
         <li v-for="(item, index) of items">
@@ -162,6 +171,114 @@
           {{ index + ' - ' + key + ' - ' + value }}
         </li>
       </ul>
+
+      <ul>
+        <li v-for="n in evenNumbers">{{n}}</li>
+      </ul>
+
+      <ol>
+        <li v-for="n in oddNumbers(numbers)">{{n}}</li>
+      </ol>
+
+      <ol>
+        <template v-for="n in 5">
+          <li>{{n}}</li>
+          <li class="divider"></li>
+        </template>
+      </ol>
+    </div>
+
+    <div id="app17">
+      <ol>
+        <li v-for="todo in todos" v-if="!todo.completed">
+          {{ todo.text }}
+        </li>
+      </ol>
+
+      <ol v-if="todos.length">
+        <li v-for="todo in todos" v-if="!todo.completed">
+          {{ todo.text }}
+        </li>
+      </ol>
+      <ol v-else>
+      </ol>
+
+      <component_17
+        v-for="(item, index) in items"
+        :key="index"
+        :item="item"
+        >
+        {{item}}
+      </component_17>
+    </div>
+
+    <div id="app18">
+      <div>
+        <div>
+          <input type="text" placeholder="Add a todo"
+            v-model="todo_input"
+            @keyup.enter="addTodo"
+          >
+        </div>
+
+        <ol>
+          <li v-for="(todo, index) in todos">
+            {{todo.text}}
+            <button @click="clearATodo(index)">X</button>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div id="app19">
+      <div>
+        <div>
+          <input type="text"
+            :placeholder="placeholder"
+            v-model="newTodo"
+            @keyup.enter="addTodo"
+            >
+        </div>
+
+        <ul>
+          <li is="component_19"
+              v-for="(todo, index) in todos"
+            :title="todo.title"
+            :key="todo.id"
+            @remove="remove(index)"
+          >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="app20">
+      <button @click="addCounter()">Add 1</button>
+      <p>
+        The button above has been clicked {{ counter }} times.
+      </p>
+
+      <button @click="warn('Form cannot be submitted yet.', $event)">
+        Submit
+      </button>
+    </div>
+
+<style>
+  .pre-line {
+    white-space: pre-line;
+  }
+</style>
+
+    <div id="app21">
+      <span>Multiline message is: </span>
+      <p class="pre-line">{{message}}</p>
+      <textarea v-model="message"></textarea>
+
+      <input type="checkbox" id="checkbox" v-model="checked">
+      <label for="checkbox">{{checked}}</label>
+
+      <div>{{ input_value }}</div>
+      <input :value="input_value" />
     </div>
 
     <script src="../../node_modules/vue/dist/vue.js"></script>

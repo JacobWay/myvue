@@ -283,9 +283,137 @@ let app16 = new Vue({
     itemsObj: {
       firstName: 'Jacob',
       lastName: 'Way'
+    },
+    numbers: [
+      0, 1, 2, 3
+    ],
+  },
+  computed: {
+    evenNumbers: function(){
+      return this.numbers.filter(function(n) {
+        return n % 2 === 0;
+      });
+    }
+  },
+  methods: {
+    oddNumbers: function(numbers) {
+      return numbers.filter(function(n) {
+        return n % 2 === 1;
+      });
     }
   },
   created: function() {
     this.items[3] = '??';
+  },
+});
+
+Vue.component('component_17', {
+  props: ['item'],
+  template: '<div>{{item}}</div>',
+});
+
+let app17 = new Vue({
+  el: '#app17',
+  data: {
+    todos: [
+    ],
+    items: [
+      1, 2
+    ]
+  },
+});
+
+let app18 = new Vue({
+  el: '#app18',
+  data: {
+    todo_input: '',
+    todos: [
+      {
+        text: 'todo 1'
+      },
+      {
+        text: 'todo 2'
+      }
+    ]
+  },
+  methods: {
+    addTodo: function() {
+      let {todos, todo_input} = this;
+      let newTodo = {};
+      newTodo.text = todo_input;
+      todos.push(newTodo);
+    },
+    clearATodo: function(index) {
+      let {todos} = this;
+      todos.splice(index, 1);
+    }
   }
+});
+
+Vue.component("component_19", {
+  props: ['title'],
+  template: `
+    <li>
+      {{title}}
+      <button @click="$emit('remove')">X</button>
+    </li>
+  `,
+});
+
+let app19 = new Vue({
+  el: '#app19',
+  data: {
+    newTodo: '',
+    placeholder: 'Add a todo',
+    todos: [
+      {
+        id: 1,
+        title: 'todo 1'
+      },
+    ],
+    todoId: 2
+  },
+  methods: {
+    addTodo: function() {
+      let {todos, newTodo, todoId} = this;
+      let todoObj = {};
+      todoObj.title = newTodo;
+      todoObj.id = todoId++;
+      todos.push(todoObj);
+    },
+    remove: function(index) {
+      let {todos} = this;
+      todos.splice(index, 1);
+    }
+  }
+});
+
+let app20 = new Vue({
+  el: '#app20',
+  data: {
+    counter: 0,
+  },
+  methods: {
+    addCounter: function() {
+      let {counter} = this;
+      counter += 1;
+      this.counter = counter;
+    },
+    warn: function(message, event) {
+      if(event) {
+        event.preventDefault();
+        console.log(message);
+      }
+    },
+  }
+})
+
+let app21 = new Vue({
+  el: '#app21',
+  data: {
+    message: 'Try it\nA new line',
+    checked: true,
+    input_value: 'something'
+  }
+
 });
