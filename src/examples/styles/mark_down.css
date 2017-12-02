@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+#app {
+  width: 100%;
+  height: 100%;
+}
+.source, .compiled {
+  width: 49%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+.source textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-right: 1px solid #ccc;
+  background-color: #f6f6f6;
+  resize: none;
+  padding: 20px;
+  vertical-align: top;
+  font-size: 14px;
+}

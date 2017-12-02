@@ -413,7 +413,107 @@ let app21 = new Vue({
   data: {
     message: 'Try it\nA new line',
     checked: true,
-    input_value: 'something'
-  }
+    input_value: 'something',
+    checked_names: [],
+    checked_radios: '',
+    selectedValue: '',
+    multiple_select: [],
+    selected: []
+  },
 
+  methods: {
+    clickSelect: function(event) {
+      console.log('??? selected: ', this.selected);
+    }
+  },
+
+});
+
+let app22 = new Vue({
+  el: '#app22',
+  data: {
+    selected: []
+  },
+  methods: {
+    clickSelect: function(event) {
+      console.log('??? selected: ', this.selected);
+    }
+  },
+
+});
+
+let app23 = new Vue({
+  el: '#app23',
+  data: {
+    items: [
+      {
+        text: 'a',
+      },
+      {
+        text: 'b',
+      },
+    ],
+    selected: '',
+  }
+});
+
+let app24 = new Vue({
+  el: '#app24',
+  data: {
+    checkbox: '',
+    radio: '',
+    selected: '',
+    option: {
+      text: 'A',
+      value: 'a'
+    },
+    msg: '',
+    age: null
+  },
+  methods: {
+    eventHandler: function() {
+    }
+  }
+});
+
+Vue.component('component-25', {
+  template: `<div>This is component-25</div>`
+});
+
+let component_25_1 = {
+  template: `<div>This is local component</div>`
+};
+
+let component_25_2 = {
+  template: `<tr><td>eventual</td></tr>`
+};
+
+let component_25_3 = {
+  data: function() {
+    return {
+      counter: 0
+    };
+  },
+  template: `
+    <button @click="addOne">{{counter}}</button>
+  `,
+  computed: {
+  },
+  methods: {
+    addOne: function() {
+      return this.counter += 1;
+    }
+  }
+}
+
+let app25 = new Vue({
+  el: '#app25',
+  data: {
+    counter: 0
+  },
+  components: {
+    'component_25_1': component_25_1,
+    'component_25_2': component_25_2,
+    'component_25_3': component_25_3
+  }
 });

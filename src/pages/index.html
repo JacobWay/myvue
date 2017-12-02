@@ -3,6 +3,11 @@
   <head>
   </head>
 
+<style>
+body {
+  margin-bottom: 500px;
+}
+</style>
   <body>
     <div id="app1">
       {{message}}
@@ -274,12 +279,95 @@
       <p class="pre-line">{{message}}</p>
       <textarea v-model="message"></textarea>
 
-      <input type="checkbox" id="checkbox" v-model="checked">
+      <div>{{ input_value }}</div>
+      <input v-model="input_value" />
+
+      <input type="checkbox" id="checkbox" v-model="checked"/>
       <label for="checkbox">{{checked}}</label>
 
-      <div>{{ input_value }}</div>
-      <input :value="input_value" />
+      <div>
+        <input type="checkbox" id="checkbox_21_1" v-model="checked_names" value="Jack"/>
+        <label for="checkbox_21_1">Jack</label>
+        <input type="checkbox" id="checkbox_21_2" v-model="checked_names" value="Jackie"/>
+        <label for="checkbox_21_2">Jackie</label>
+
+        <div>Checked names: {{checked_names}}</div>
+      </div>
+
+      <div>
+        <input type="radio" id="checkbox_21_3" v-model="checked_radios" value="1"/>
+        <label for="checkbox_21_3">One</label>
+        <input type="radio" id="checkbox_21_4" v-model="checked_radios" value="2"/>
+        <label for="checkbox_21_4">Two</label>
+        <div>Picked: {{checked_radios}}</div>
+      </div>
+
+      <div>
+        <select v-model="selectedValue">
+          <option disabled value="">Please select one</option>
+          <option value="A" >A</option>
+          <option>B</option>
+          <option>C</option>
+        </select>
+
+        <span>Selected: {{selectedValue}}</span>
+      </div>
+
     </div>
+
+    <div id="app22">
+      <select v-model="selected"
+        @click="clickSelect"
+        multiple>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <br>
+      <span>Selected: {{ selected }}</span>
+
+    </div>
+
+    <div id="app23">
+      <select v-model="selected">
+        <option v-for="item in items" :value="item.text">{{item.text}}</option>
+      </select>
+
+      <br>
+      <span>{{selected}}</span>
+    </div>
+
+    <div id="app24">
+      <input type="checkbox" v-model="checkbox" @click="eventHandler" />
+      <span>checkbox: {{checkbox}}</span>
+
+      <input type="radio" v-model="radio" />
+      <span>radio: {{radio}}</span>
+
+      <select v-model="selected">
+        <option :value="option.value">{{option.text}}</option>
+      </select>
+      <span>selected: {{selected}}</span>
+
+      <input v-model.lazy="msg" />
+      <input v-model.number="age" type="number" />
+    </div>
+
+    <div id="app25">
+      <!--<component-25>-->
+      <!--</component-25>-->
+
+      <component_25_1></component_25_1>
+
+      <table>
+        <tr is="component_25_2"></tr>
+      </table>
+
+      <div>
+        <component_25_3 :counter="counter"></component_25_3>
+      </div>
+    </div>
+
 
     <script src="../../node_modules/vue/dist/vue.js"></script>
     <script src="../../node_modules/axios/dist/axios.js"></script>

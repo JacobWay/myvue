@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../styles/mark_down.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="source">
+        <textarea v-model="input"
+          @input="update"
+          >
+        </textarea>
+      </div>
+
+      <div class="compiled"
+        v-html="result">
+      </div>
+    </div>
+
+    <script src="../../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../../node_modules/lodash/lodash.js"></script>
+    <script src="../../../node_modules/marked//lib/marked.js"></script>
+    <script src="../scripts/mark_down.js"></script>
+  </body>
+</html>
