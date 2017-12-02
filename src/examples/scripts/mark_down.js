@@ -9,7 +9,8 @@ let app = new Vue({
     }
   },
   methods: {
-    update: _.debounce(function() {
+    update: _.debounce(function(e) {
+      this.input = e.target.value;
     }, 300)
   }
 });

@@ -353,6 +353,15 @@ body {
       <input v-model.number="age" type="number" />
     </div>
 
+<style>
+  .blueColor {
+    color: blue;
+  }
+  .largeFont {
+    font-size: 22px;
+  }
+</style>
+
     <div id="app25">
       <!--<component-25>-->
       <!--</component-25>-->
@@ -360,14 +369,49 @@ body {
       <component_25_1></component_25_1>
 
       <table>
-        <tr is="component_25_2"></tr>
+        <tr is="component_25_2" :message="message"></tr>
       </table>
 
       <div>
         <component_25_3 :counter="counter"></component_25_3>
       </div>
+
+      <div>
+        <component_25_4
+          :my-message="myMessage"
+          :prop-f="aNumber"
+          prop-a="aProperty"
+          class="blueColor"
+          >
+        </component_25_4>
+      </div>
     </div>
 
+    <div id="app26">
+      <div>
+        <span>{{clickNumber}}</span>
+      </div>
+
+      <div>
+        <button :value="number1" @click="handler1">{{number1}}</button>
+        <button :value="number2" @click="handler2">{{number2}}</button>
+      </div>
+    </div>
+
+    <div id="app27">
+      <div>
+        {{total}}
+      </div>
+
+      <div>
+        <button_counter @increment="incrementTotal"></button_counter>
+        <button_counter @increment="incrementTotal"></button_counter>
+      </div>
+
+      <div>
+        <component_27 :foo="bar" @update:foo="val => bar = val"></component_27>
+      </div>
+    </div>
 
     <script src="../../node_modules/vue/dist/vue.js"></script>
     <script src="../../node_modules/axios/dist/axios.js"></script>

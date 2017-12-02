@@ -485,7 +485,8 @@ let component_25_1 = {
 };
 
 let component_25_2 = {
-  template: `<tr><td>eventual</td></tr>`
+  props: ['message'],
+  template: `<tr><td>{{message}}</td></tr>`
 };
 
 let component_25_3 = {
@@ -506,14 +507,105 @@ let component_25_3 = {
   }
 }
 
+Vue.component('component_25_4', {
+  props: {
+    'myMessage': {
+      type: Object
+    },
+    propF: {
+      type: Number,
+      validator: function(value){
+        return value > 8;
+      }
+    },
+    propA: [String],
+  },
+  template: `
+    <div class="largeFont">
+      <div>{{myMessage.text + '-' + propF}}</div>
+      <div>{{propA}}</div>
+    </div>
+  `
+});
+
 let app25 = new Vue({
   el: '#app25',
   data: {
-    counter: 0
+    counter: 0,
+    message: 'props value',
+    myMessage: {
+      text: 'Learn Vue',
+      isComplete: false
+    },
+    aNumber: 9,
+    aPropety: 'some property'
   },
   components: {
     'component_25_1': component_25_1,
     'component_25_2': component_25_2,
     'component_25_3': component_25_3
+  }
+});
+
+let app26 = new Vue({
+  el: '#app26',
+  data: {
+    number1: 0,
+    number2: 0,
+    clickNumber: 0,
+  },
+  methods: {
+    handler1: function(e) {
+      this.number1 += 1;
+      this.clickNumber = this.number1 + this.number2;
+    },
+    handler2: function(e) {
+      this.number2 += 1;
+      this.clickNumber = this.number1 + this.number2;
+    },
+  }
+});
+
+Vue.component('button_counter', {
+  template: `
+    <button :value="counter" @click="incrementCounter">
+    {{counter}}
+    </button>
+  `,
+  data: function() {
+    return {
+      counter: 0
+    }
+  },
+  methods: {
+    incrementCounter: function(e) {
+      this.counter += 1;
+      this.$emit('increment');
+    }
+  }
+});
+
+Vue.component('component_27', {
+  template: `
+    <input :value="foo" @input="handler" />
+  `,
+  props: ["foo"],
+  methods: {
+    handler: function(e) {
+      this.$emit("update:foo", 22);
+    }
+  }
+});
+
+let app27 = new Vue({
+  el: '#app27',
+  data: {
+    total: 0,
+    bar: '10',
+  },
+  methods: {
+    incrementTotal: function() {
+      this.total += 1;
+    },
   }
 });
