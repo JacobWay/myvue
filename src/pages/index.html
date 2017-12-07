@@ -1,12 +1,18 @@
 <!doctype html>
 <html>
   <head>
-  </head>
 
 <style>
 body {
-  margin-bottom: 500px;
+    max-width: 750px;
+    margin: 0 auto;
+    background: hsla(184, 19%, 53%, 0.14901960784313725);
+    margin-bottom: 300px;
 }
+</style>
+  </head>
+
+<style>
 </style>
   <body>
     <div id="app1">
@@ -411,6 +417,127 @@ body {
       <div>
         <component_27 :foo="bar" @update:foo="val => bar = val"></component_27>
       </div>
+
+      <div>
+        <component_27_1 ></component_27_1>
+      </div>
+    </div>
+
+    <a href="/src/pages/about">About</a>
+    <div id="app28">
+    </div>
+
+    <div id="app29">
+      <input :value="someValue"
+        @input="handler"
+      />
+
+      <component_29
+        :value="anotherValue"
+        @input="value => {anotherValue = value}"
+      >
+      </component_29>
+    </div>
+
+    <div id="app30">
+      $
+      <input
+        v-model="inputValue"
+        @input="handler"
+      />
+    </div>
+
+    <div id="app31">
+      <component_31 v-model="price"></component_31>
+    </div>
+
+    <div id="app32">
+      <component_32
+        :checked="foo"
+        @change="handler"
+        value="some value"
+      ></component_32>
+    </div>
+
+    <div id="app33">
+      <component_33_1 :value="value1"></component_33_1>
+      <component_33_2 :value="value2"></component_33_2>
+    </div>
+
+    <div id="app34">
+      <component-34-app>
+        <component-34-header>
+        </component-34-header>
+
+        <component-34-footer>
+        </component-34-footer>
+      </component-34-app>
+
+    </div>
+
+    <div id="app35">
+      <component-35-layout>
+        <p>
+          Some content goes here.
+        </p>
+        <h1 slot="header">
+          This is a head.
+        </h1>
+        <p>
+          Some content goes here.
+        </p>
+        <p slot="footer">
+          This is a footer.
+        </p>
+        <p>
+          Some content goes here.
+        </p>
+      </component-35-layout>
+    </div>
+
+    <div id="app36">
+      <div class="parent">
+        <component-36>
+          <template slot-scope="props">
+            <span>Hello from parent</span>
+            <span>{{props.text}}</span>
+          </template>
+        </component-36>
+      </div>
+    </div>
+
+    <div id="app37">
+      <component-37 :items="items">
+        <li
+         slot="item"
+         slot-scope="props"
+         class="my-fancy-item">
+          {{props.text}}
+        </li>
+      </component-37>
+    </div>
+
+    <div id="app38">
+      <component :is="currentView">
+      </component>
+    </div>
+
+    <div id="app39">
+      <component-39
+        ref="component-39"
+        :foo="baz"
+        :bar="qux"
+        @event-a="doThis"
+        @event-b="doThat"
+        >
+        <img slot="icon" alt="Image" />
+        <p slot="main-text">Hello!</p>
+      </component-39>
+    </div>
+
+    <div id="app40">
+      <component-40>
+      </component-40>
     </div>
 
     <script src="../../node_modules/vue/dist/vue.js"></script>

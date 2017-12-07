@@ -597,6 +597,17 @@ Vue.component('component_27', {
   }
 });
 
+Vue.component('component_27_1', function(resolve, reject) {
+  setTimeout(function() {
+    resolve({
+      template: `
+        <div>Asynchronous component</div>
+      `,
+
+    });
+  }, 10);
+});
+
 let app27 = new Vue({
   el: '#app27',
   data: {
@@ -608,4 +619,353 @@ let app27 = new Vue({
       this.total += 1;
     },
   }
+});
+
+let app28 = new Vue({
+  el: '#app28',
+  data: {
+    currentRoute: window.location.pathname,
+    Home: { template: '<p>home page</p>' },
+    About: { template: '<p>about page</p>' },
+    NotFound: { template: '<p>page not found</p>' },
+    routes: {
+      '/': this.Home,
+      '/src/pages/about': this.About
+    },
+  },
+  methods: {
+    ViewComponent: function() {
+      return this.routes[this.currentRoute] || this.NotFound
+    },
+  },
+  render(h) {
+    return h(this.ViewComponent);
+  }
+});
+
+Vue.component('component_29', {
+  template: `
+    <input :value="value"
+      @input="handler"
+    />
+  `,
+  props: ["value"],
+  methods: {
+    handler: function(e) {
+      this.$emit('input', 30);
+    }
+
+  }
+});
+
+let app29 = new Vue({
+  el: '#app29',
+  data: {
+    someValue: 'something',
+    anotherValue: 'another something',
+  },
+  methods: {
+    handler: function(e) {
+      console.log('??? e: ', e);
+    }
+  },
+});
+
+let app30 = new Vue({
+  el: '#app30',
+  data: {
+    inputValue: '',
+  },
+  methods: {
+    handler: function() {
+      let {inputValue} = this;
+      inputValue.trim();
+      let index = inputValue.indexOf('.');
+      inputValue = index === -1 ?
+      inputValue :
+      inputValue.slice(0, index + 3);
+      this.inputValue = (inputValue);
+      console.log('??? : ', inputValue, index, this.inputValue);
+    }
+  },
+});
+
+Vue.component("component_31", {
+  template: `
+    <span>
+      $
+      <input
+        ref="input"
+        :value="value"
+        @input="updateValue($event.target.value)"
+      />
+    </span>
+  `,
+  props: ["value"],
+  methods: {
+    updateValue: function(value) {
+      let formattedValue = value
+        .trim()
+        .slice(
+          0,
+          value.indexOf('.') === -1
+            ? value.length
+            : value.indexOf('.') + 3
+        );
+      if(formattedValue !== value){
+        this.$refs.input.value = formattedValue;
+      }
+      this.$emit('input', Number(formattedValue));
+    }
+  },
+});
+
+let app31 = new Vue({
+  el: '#app31',
+  data: {
+    price: ''
+  }
+});
+
+Vue.component('component_32', {
+  template: `
+    <div>
+      <input type="checkbox" :checked="checked" @change="handler" />
+      <span>Checked: {{checked}}</span>
+    </div>
+  `,
+  props: ["checked"],
+  methods: {
+    handler: function(value) {
+      console.log('??? checked: ', this.checked);
+      console.log('??? value: ', value);
+      this.$emit('change');
+    }
+  }
+
+});
+
+let app32 = new Vue({
+  el: '#app32',
+  data: {
+    foo: 'some foo',
+  },
+  methods: {
+    handler: function(para1) {
+      console.log('??? para1: ', para1);
+    }
+  }
+});
+
+let bus = new Vue();
+
+Vue.component('component_33_1', {
+  template: `
+    <div>
+      <button @click="handler">{{value}}</button>
+    </div>
+  `,
+  props: ["value"],
+  methods: {
+    handler: function() {
+      bus.$emit('busEvent', 'a');
+    }
+  }
+});
+
+Vue.component('component_33_2', {
+  template: `
+    <div>
+      <button @click="handler">{{dataValue}}</button>
+    </div>
+  `,
+  props: ["value"],
+  data: function() {
+    return {
+      dataValue: this.value,
+    }
+  },
+  created: function() {
+    bus.$on('busEvent', (para) => {
+      this.dataValue = para;
+    }, this)
+  },
+  methods: {
+    handler: function() {
+    }
+  }
+});
+
+let app33 = new Vue({
+  el: '#app33',
+  data: {
+    value1: '1',
+    value2: '2'
+  },
+});
+
+Vue.component('component-34-app', {
+  template: `
+    <div>
+      <slot></slot>
+    </div>
+  `,
+});
+Vue.component('component-34-header', {
+  template: `
+    <div>
+      Header
+    </div>
+  `,
+});
+Vue.component('component-34-footer', {
+  template: `
+    <div>
+      Footer
+    </div>
+  `,
+});
+
+let app34 = new Vue({
+  el: '#app34',
+
+});
+
+Vue.component('component-35-layout', {
+  template: `
+    <div>
+        <header>
+          <slot name="header"></slot>
+        </header>
+        <main>
+          <slot></slot>
+        </main>
+        <footer>
+          <slot name="footer"></slot>
+        </footer>
+    </div>
+  `,
+});
+
+let app35 = new Vue({
+  el: '#app35',
+});
+
+Vue.component('component-36', {
+  template: `
+    <div class="child">
+      <slot text="Hello from child"></slot>
+    </div>
+  `,
+});
+
+let app36 = new Vue({
+  el: '#app36'
+});
+
+Vue.component('component-37', {
+  template: `
+    <div>
+      <ul>
+        <slot name="item"
+          v-for="item in items"
+          :text="item.text"
+          ></slot>
+      </ul>
+    </div>
+  `,
+  props: ["items"]
+});
+
+let app37 = new Vue({
+  el: '#app37',
+  data: {
+    items: [
+      {
+        text: 'a',
+      },
+      {
+        text: 'b',
+      },
+    ]
+  }
+});
+
+let app38 = new Vue({
+  el: '#app38',
+  data: {
+    currentView: 'home',
+  },
+  components: {
+    home: {
+      template: `
+        <div>Home</div>
+      `
+    },
+    about: {
+      template: `
+        <div>About</div>
+      `
+    },
+  }
+});
+
+Vue.component('component-39', {
+  template: `
+    <div>
+      <div>
+        component-39 {{bar}}
+      </div>
+      <slot name="icon">
+      </slot>
+      <div @click="doThat($event)">
+        some content {{foo}}
+      </div>
+      <slot name="main-text" >
+      </slot>
+    </div>
+  `,
+  props: ["foo", "bar"],
+  methods: {
+    doThat: function(e) {
+      this.$emit('event-b');
+    }
+  }
+});
+
+let app39 = new Vue({
+  el: '#app39',
+  data: {
+    baz: 'bbza',
+    qux: 'qqux'
+  },
+  created: function() {
+  },
+  mounted: function() {
+  },
+  methods: {
+    doThis: function() {
+      this.baz = 'zab';
+    },
+    doThat: function() {
+      this.qux = 'xuq';
+    }
+  },
+});
+
+Vue.component('component-40', function(resolve, reject) {
+  setTimeout(function(){
+    resolve({
+      template: `
+        <div>
+          asynchronous component 40
+        </div>
+      `
+    });
+  }, 1000);
+});
+
+let app40 = new Vue({
+  el: '#app40',
+
 });
